@@ -46,6 +46,9 @@ RUN file gor && \
 
 # 最终镜像
 FROM scratch
+
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+
 # 复制编译好的二进制文件
 COPY --from=builder /build/gor /gor
 
